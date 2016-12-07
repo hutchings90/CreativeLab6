@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zombie Crush</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css"/>
+    <script src="javascripts/angular.min.js"></script>
+    <script src="javascripts/main.js"></script>
+</head>
+<body ng-app="App" ng-controller="MainCtrl">
+    <audio autoplay loop>
+        <source src="sounds/ZombieCrush.mp3"/>
+    </audio>
+    <div id="display">
+        <table>
+            <thead>
+                <tr id="score-board">
+                    <td>SCORE:</td>
+                    <td ng-bind="score"></td>
+                    <td ng-bind="addition.string" ng-class="addition.class"></td>
+                    <td>MOVES:</td>
+                    <td ng-bind="moves"></td>
+                    <td>TIME:</td>
+                    <td ng-bind="time.string"></td>
+                    <td ng-click="submit()" ng-style="submitStyle">Submit</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in zombies">
+                    <td ng-repeat="zombie in row" ng-click="clickedZombie(zombie)" ng-class="zombie.class">
+                        <img ng-src="images/cell{{zombie.background}}.png" width="70px"/>
+                        <img ng-src="images/zombieHead{{zombie.id}}.png" width="70px"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+body{
+    text-align: center;
+    background: url("../images/background.png") no-repeat;
+    background-size: cover;
+    margin: 0px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding-top: 10px;
+}
+
+a{
+    color: #00B7FF;
+}
+
+#zombie-table{
+    border-collapse: collapse;
+    min-width: 592px;
+}
+
+#zombie-body{
+    cursor: url("../images/mace0.png"), auto;
+}
+
+thead td{
+    text-align: center;
+}
+
+#zombie-header{
+    color: white;
+    background-color: red;
+}
+
+input{
+    color: white;
+    background-color: red;
+    border: 0px;
+    cursor: pointer;
+}
+
+#zombie-header td{
+    display: inline-block;
+    width: 70px;
+}
+
+#zombie-body td{
+    text-align: left;
+    position: relative;
+    display: inline-block;
+    width: 70px;
+}
+
+#zombie-body td:hover{
+    border: 1px solid #61FFE6;
+}
+
+#game-table{
+    color: white;
+    background: black;
+    height: 560px;
+    display: inline-block;
+    border: 1px solid white;
+    padding-bottom: 5px;
+    text-align: left;
+    overflow-y: auto;
+    vertical-align: top;
+    border-collapse: collapse;
+}
+
+.zombie-space{
+    height: 70px;
+    border: 1px solid black;
+}
+
+td img{
+    vertical-align: middle;
+    position: absolute;
+}
+
+#display{
+    display: inline-block;
+}
+
+.selected{
+    border: 1px solid #61FFE6;
+}
+
+@keyframes hitZombie{
+    from {border-color: #00ff00;}
+    to {border-color: black;}
+}
+
+.hit{
+    animation-name: hitZombie;
+    animation-duration: .5s;
+    animation-iteration-count: 5;
+}
+
+.addition-update{
+    visibility: auto;
+    background-color: #00ff00;
+}
+
+.hidden{
+    visibility: hidden;
+    background-color: red;
+}
+
+#game{
+    display: none;
+}
+
+#sign-in-wrapper{
+    display: none;
+}
+
+#sign-in-button{
+    padding: 5px;
+}
+
+#game-wrapper{
+    display: inline-block;
+}
+
+#game-header td{
+    border: 1px solid white;
+    min-width: 60px;
+}
+
+#current-game{
+    background-color: #333333;
+}

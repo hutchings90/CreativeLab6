@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zombie Crush</title>
+	    <link rel="stylesheet" type="text/css" href="stylesheets/style.css"/>
+        <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script> 
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyDlU1FDETiFKvfidJh2SBrc2NV4QramusU",
+                authDomain: "zombie-crush.firebaseapp.com",
+                databaseURL: "https://zombie-crush.firebaseio.com",
+                storageBucket: "zombie-crush.appspot.com",
+                messagingSenderId: "1098134626910"
+            };
+            firebase.initializeApp(config);
+            var database = firebase.database();
+        </script>
+	    <script src="javascripts/angular.min.js"></script>
+	    <script src="javascripts/main.js"></script>
+    </head>
+    <body ng-app="App" ng-controller="MainCtrl">
+        <div id="sign-in-out-wrapper">
+            <div id="sign-in-wrapper">
+                <input id="sign-in-button" type="button" value="Sign In With Google" ng-click="toggleLogin()"/>
+            </div>
+        </div>
+		<div id="game">
+		    <audio id="audio" loop>
+		        <source src="sounds/ZombieCrush.mp3"/>
+		    </audio>
+		    <div id="display">
+                <div id="game-wrapper">
+    		        <table id="zombie-table">
+    		            <thead id="zombie-header">
+    		                <tr id="score-board">
+    		                    <td>SCORE:</td>
+    		                    <td ng-bind="score"></td>
+    		                    <td ng-bind="addition.string" ng-class="addition.class"></td>
+    		                    <td>MOVES:</td>
+    		                    <td ng-bind="moves"></td>
+    		                    <td>TIME:</td>
+    		                    <td ng-bind="time.string"></td>
+                                <td><input id="sign-out" type="button" value="SIGN OUT" ng-click="toggleLogin()"/></td>
+    		                </tr>
+    		            </thead>
+    		            <tbody id="zombie-body">
+    		                <tr ng-repeat="row in zombies">
+    		                    <td ng-repeat="zombie in row" ng-click="clickedZombie(zombie)" ng-class="zombie.class">
+    		                        <img ng-src="images/cell{{zombie.background}}.png" width="70px"/>
+    		                        <img ng-src="images/zombieHead{{zombie.id}}.png" width="70px"/>
+    		                    </td>
+    		                </tr>
+    		            </tbody>
+    		        </table>
+                </div>
+                <table id="game-table">
+                    <thead id="game-header">
+                        <td>GAME</td>
+                        <td>SCORE</td>
+                        <td>MOVES</td>
+                        <td>TIME</td>
+                    </thead>
+                    <tbody id="game-body">
+                        <tr id="current-game">
+                            <td>Current</td>
+                            <td ng-bind="game.score"></td>
+                            <td ng-bind="game.moves"></td>
+                            <td ng-bind="game.time"></td>
+                        </tr>
+                        <tr ng-repeat="game in games track by $index">
+                            <td ng-bind="$index + 1"></td>
+                            <td ng-bind="{{game.score}}"></td>
+                            <td ng-bind="{{game.moves}}"></td>
+                            <td ng-bind="{{game.time}}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+		    </div>
+		</div>
+    </body>
+</html>
